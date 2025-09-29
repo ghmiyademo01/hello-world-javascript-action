@@ -20,4 +20,4 @@ RUN chmod +x node_modules/.bin/rollup
 RUN npm run build
 
 # 実行コマンド（必要なら）
-CMD ["node", "dist/bundle.js"]
+CMD ["node", "dist/index.js"]
