@@ -1,0 +1,16 @@
+name: Hello World
+description: Greet someone and record the time
+
+inputs: # 外部から受け取るパラメータの定義
+  who-to-greet: # 挨拶する相手の名前を指定する入力。必須で、デフォルトは "World"。
+    description: Who to greet
+    required: true
+    default: World
+
+outputs: # 実行結果として返す値の定義
+  time: # 挨拶した時間を記録して返す
+    description: The time we greeted you
+
+runs: # 実行方法の定義
+  using: node20 # Node.js のバージョン（ここでは Node.js 20）
+  main: dist/index.js # 実行する JavaScript ファイルのパス
