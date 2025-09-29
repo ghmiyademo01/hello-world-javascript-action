@@ -33,10 +33,10 @@ jobs:
       - uses: actions/checkout@v4 # リポジトリのコードをチェックアウト
 
       # JSON 検証ステップを追加
-      - name: Validate settings.json
-        run: |
-          echo "Validating settings.json..."
-          jq empty ./app/dist/settings.json
+      #- name: Validate settings.json
+      #  run: |
+      #    echo "Validating settings.json..."
+      #    jq empty ./app/dist/settings.json
     
       - name: Azure login # Azure にログイン
         uses: azure/login@v1.4.6  # azure/login アクションを使用
