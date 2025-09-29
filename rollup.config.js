@@ -4,12 +4,17 @@ import { nodeResolve } from "@rollup/plugin-node-resolve"; // Node.js のモジ�
 const config = {
   input: "src/index.js", // バンドルのエントリーポイント。src/index.js から依存関係をたどってまとめます。
   output: {
-    esModule: true, // CommonJS との互換性を保つために __esModule フラグを付与します。
+    //esModule: true, // CommonJS との互換性を保つために __esModule フラグを付与します。
     file: "dist/index.js", // 出力先
-    format: "es", // 出力形式 ES Modules）
+    //format: "es", // 出力形式 ES Modules）
+    format: "cjs",
     sourcemap: true, // ソースマップを生成して、デバッグ時に元のコードを追跡可能にします。
   },
-  plugins: [commonjs(), nodeResolve({ preferBuiltins: true })], // CommonJS モジュールを ES モジュールに変換、Node.js の組み込みモジュールを優先して解決します
+  //plugins: [commonjs(), nodeResolve({ preferBuiltins: true })], // CommonJS モジュールを ES モジュールに変換、Node.js の組み込みモジュールを優先して解決します
+  plugins: [
+    nodeResolve(),
+    commonjs()
+  ]
 };
 
 export default config; // Rollup がこの設定を読み込むために export default でエクスポート。
