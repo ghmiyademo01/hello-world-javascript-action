@@ -11,6 +11,7 @@ RUN npm install
 
 # アプリのソースコードをコピー
 COPY . .
+RUN chmod +x node_modules/.bin/rollup
 
 # ビルド
 RUN npm run build
