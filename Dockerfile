@@ -1,20 +1,23 @@
+# ベースイメージ
 FROM node:18-alpine
 
-# 作業ディレクトリを設定
+# 作業ディレクトリ
 WORKDIR /app
 
-# package.json と package-lock.json をコピー
+# 依存関係を先にコピーしてキャッシュ効率を高める
 COPY package*.json ./
 
 # 依存関係をインストール
 RUN npm install
 
-# アプリのソースコードをコピー
+# ソースコードをコピー
 COPY . .
+
+# Rollup 実行権限を確保（Windows→Linuxコピー時の権限問題対策）
 RUN chmod +x node_modules/.bin/rollup
 
-# ビルド
+# ビルド実行
 RUN npm run build
 
-# 実行コマンド（必要に応じて）
-CMD ["npm", "start"]
+# 実行コマンド（必要なら）
+CMD ["node", "dist/bundle.js"]
